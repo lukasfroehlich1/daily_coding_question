@@ -172,7 +172,7 @@ class Scheduler:
         self.schedule_task(task, initialdelay)
         return task
 
-    def add_daytime_task(self, action, taskname, weekdays, monthdays, timeonday, 
+    def add_daytime_task(self, action, taskname, weekdays, monthdays, timeonday,
             processmethod, args, kw):
         """Add a new Day Task (Weekday or Monthday) to the schedule."""
         if weekdays and monthdays:
@@ -212,9 +212,9 @@ class Scheduler:
 
     def schedule_task(self, task, delay):
         """Add a new task to the scheduler with the given delay (seconds).
-        
+
         Low-level method for internal use.
-        
+
         """
         if self.running:
             # lock the sched queue, if needed
@@ -230,14 +230,14 @@ class Scheduler:
 
     def schedule_task_abs(self, task, abstime):
         """Add a new task to the scheduler for the given absolute time value.
-        
+
         Low-level method for internal use.
-        
+
         """
 
         if self.running:
 
-            
+
             # lock the sched queue, if needed
             self._acquire_lock()
             try:
@@ -281,7 +281,6 @@ class Scheduler:
             try:
                 self.sched.run()
             except Exception,x:
-                print "IS THIS A THING AT ALL?????????????"
                 logging.critical("ERROR DURING SCHEDULER EXECUTION: {0}\n{1}".format(x, "".join(traceback.format_exception(*sys.exc_info()))))
             # queue is empty; sleep a short while before checking again
             if self.running:
