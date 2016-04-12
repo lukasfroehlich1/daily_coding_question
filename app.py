@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from scheduler import *
 #from test_scheduler import *
 
@@ -7,7 +7,7 @@ print "things are getting started"
 
 @app.route('/')
 def hello_world():
-    return app.send_static_file('index.html')
+    return render_template('index.html')
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
